@@ -1,0 +1,3 @@
+[submodule "Resources"]
+	path = Resources
+	url = https://github.com/LaurentGomila/SFML-Game-Development-Book.git

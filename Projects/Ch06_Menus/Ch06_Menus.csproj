@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2B672DD-5DA4-4F05-804A-D825A659A5B8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ch06_Menus</RootNamespace>
+    <AssemblyName>Ch06_Menus</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>$(SolutionDir)Build\$(MSBuildProjectName)\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>$(SolutionDir)Build\$(MSBuildProjectName)\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(SolutionDir)\Projects\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Aircraft.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandQueue.cs" />
+    <Compile Include="Component.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="Label.cs" />
+    <Compile Include="MenuState.cs" />
+    <Compile Include="PauseState.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ResourceHolder.cs" />
+    <Compile Include="ResourceIdentifiers.cs" />
+    <Compile Include="SceneNode.cs" />
+    <Compile Include="SettingsState.cs" />
+    <Compile Include="SpriteNode.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="StateIdentifiers.cs" />
+    <Compile Include="StateStack.cs" />
+    <Compile Include="TitleState.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="sfmlnet-graphics-2">
+      <HintPath>$(SolutionDir)Vendor\SFML.Net-2.1\lib\sfmlnet-graphics-2.dll</HintPath>
+    </Reference>
+    <Reference Include="sfmlnet-window-2">
+      <HintPath>$(SolutionDir)Vendor\SFML.Net-2.1\lib\sfmlnet-window-2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Resources\06_Menus\Media\Sansation.ttf">
+      <Link>Media\Sansation.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\ButtonNormal.png">
+      <Link>Media\Textures\ButtonNormal.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\ButtonPressed.png">
+      <Link>Media\Textures\ButtonPressed.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\ButtonSelected.png">
+      <Link>Media\Textures\ButtonSelected.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\Desert.png">
+      <Link>Media\Textures\Desert.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\Eagle.png">
+      <Link>Media\Textures\Eagle.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\Raptor.png">
+      <Link>Media\Textures\Raptor.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Resources\06_Menus\Media\Textures\TitleScreen.png">
+      <Link>Media\Textures\TitleScreen.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(SolutionDir)Vendor\SFML.Net-2.1\extlibs\*" "$(TargetDir)" /Y /D</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
