@@ -1,58 +1,59 @@
 ﻿namespace Ch02_Resources
 {
-    using System;
-    using System.Windows.Forms;
-    using SFML.Graphics;
-    using SFML.Window;
+  using SFML.Graphics;
+  using SFML.System;
+  using SFML.Window;
+  using System;
+  using System.Windows.Forms;
 
-    // Resource ID for Texture
-    namespace Textures
+  // Resource ID for Texture
+  namespace Textures
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Landscape,
-            Airplane,
-        }
+      Landscape,
+      Airplane,
     }
+  }
 
-    internal class Program
+  internal class Program
+  {
+    private static void Main()
     {
-        private static void Main()
-        {
-            var window = new RenderWindow(new VideoMode(640, 480), "Resources");
-            window.SetFramerateLimit(20);
+      var window = new RenderWindow(new VideoMode(640, 480), "Resources");
+      window.SetFramerateLimit(20);
 
-            // Different from original code since C# events are used instead of polling
-            window.Closed += (o, a) => window.Close();
-            window.KeyPressed += (o, a) => window.Close();
+      // Different from original code since C# events are used instead of polling
+      window.Closed += (o, a) => window.Close();
+      window.KeyPressed += (o, a) => window.Close();
 
-            // Try to load resources
-            var textures = new TextureHolder();
-            try
-            {
-                textures.Load(Textures.ID.Landscape, "Media/Textures/Desert.png");
-                textures.Load(Textures.ID.Airplane, "Media/Textures/Eagle.png");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Exception: " + e.ToString());
-                return;
-            }
+      // Try to load resources
+      var textures = new TextureHolder();
+      try
+      {
+        textures.Load(Textures.ID.Landscape, "Media/Textures/Desert.png");
+        textures.Load(Textures.ID.Airplane, "Media/Textures/Eagle.png");
+      }
+      catch (Exception e)
+      {
+        MessageBox.Show("Exception: " + e.ToString());
+        return;
+      }
 
-            // Access resources
-            var landscape = new Sprite(textures.Get(Textures.ID.Landscape));
-            var airplane = new Sprite(textures.Get(Textures.ID.Airplane));
-            airplane.Position = new Vector2f(200, 200);
+      // Access resources
+      var landscape = new Sprite(textures.Get(Textures.ID.Landscape));
+      var airplane = new Sprite(textures.Get(Textures.ID.Airplane));
+      airplane.Position = new Vector2f(200, 200);
 
-            while (window.IsOpen())
-            {
-                window.DispatchEvents();
+      while (window.IsOpen)
+      {
+        window.DispatchEvents();
 
-                window.Clear();
-                window.Draw(landscape);
-                window.Draw(airplane);
-                window.Display();
-            }
-        }
+        window.Clear();
+        window.Draw(landscape);
+        window.Draw(airplane);
+        window.Display();
+      }
     }
+  }
 }

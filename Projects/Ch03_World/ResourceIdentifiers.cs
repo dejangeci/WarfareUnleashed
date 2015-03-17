@@ -1,12 +1,12 @@
 ﻿namespace Ch03_World
 {
-    namespace Textures
+  namespace Textures
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Eagle,
-            Raptor,
-            Desert,
-        }
+      Eagle,
+      Raptor,
+      Desert,
     }
+  }
 }

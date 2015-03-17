@@ -1,11 +1,11 @@
 ﻿namespace Ch01_Intro
 {
-    internal class Program
+  internal class Program
+  {
+    private static void Main()
     {
-        private static void Main()
-        {
-            var game = new Game();
-            game.Run();
-        }
+      var game = new Game();
+      game.Run();
     }
+  }
 }

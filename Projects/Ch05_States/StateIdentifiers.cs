@@ -1,15 +1,15 @@
 ﻿namespace Ch05_States
 {
-    namespace States
+  namespace States
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            None,
-            Title,
-            Menu,
-            Game,
-            Loading,
-            Pause
-        }
+      None,
+      Title,
+      Menu,
+      Game,
+      Loading,
+      Pause
     }
+  }
 }

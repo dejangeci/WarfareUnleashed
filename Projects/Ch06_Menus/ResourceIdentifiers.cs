@@ -1,24 +1,24 @@
 ﻿namespace Ch06_Menus
 {
-    namespace Textures
+  namespace Textures
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Eagle,
-            Raptor,
-            Desert,
-            TitleScreen,
-            ButtonNormal,
-            ButtonSelected,
-            ButtonPressed,
-        }
+      Eagle,
+      Raptor,
+      Desert,
+      TitleScreen,
+      ButtonNormal,
+      ButtonSelected,
+      ButtonPressed,
     }
+  }
 
-    namespace Fonts
+  namespace Fonts
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Main
-        }
+      Main
     }
+  }
 }

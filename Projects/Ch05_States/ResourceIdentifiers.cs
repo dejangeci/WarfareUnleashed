@@ -1,21 +1,21 @@
 ﻿namespace Ch05_States
 {
-    namespace Textures
+  namespace Textures
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Eagle,
-            Raptor,
-            Desert,
-            TitleScreen,
-        }
+      Eagle,
+      Raptor,
+      Desert,
+      TitleScreen,
     }
+  }
 
-    namespace Fonts
+  namespace Fonts
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Main
-        }
+      Main
     }
+  }
 }

@@ -1,16 +1,16 @@
 ﻿namespace Ch06_Menus
 {
-    namespace States
+  namespace States
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            None,
-            Title,
-            Menu,
-            Game,
-            Loading,
-            Pause,
-            Settings
-        }
+      None,
+      Title,
+      Menu,
+      Game,
+      Loading,
+      Pause,
+      Settings
     }
+  }
 }

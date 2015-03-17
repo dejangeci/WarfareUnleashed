@@ -1,12 +1,12 @@
 ﻿namespace Ch04_Input
 {
-    namespace Textures
+  namespace Textures
+  {
+    internal enum ID
     {
-        internal enum ID
-        {
-            Eagle,
-            Raptor,
-            Desert,
-        }
+      Eagle,
+      Raptor,
+      Desert,
     }
+  }
 }
