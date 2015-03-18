@@ -1,5 +1,6 @@
 ﻿namespace Ch06_Menus
 {
+  using SFML.System;
   using SFML.Window;
   using System;
   using System.Collections.Generic;
@@ -32,7 +33,7 @@
       factories.Add(stateId, stateFactory);
     }
 
-    public void Update(TimeSpan dt)
+    public void Update(Time dt)
     {
       // Iterate from top to bottom, stop as soon as update() returns false
       for (int i = stack.Count - 1; i >= 0; i--)

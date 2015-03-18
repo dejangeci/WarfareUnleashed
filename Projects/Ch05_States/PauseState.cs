@@ -3,7 +3,6 @@
   using SFML.Graphics;
   using SFML.System;
   using SFML.Window;
-  using System;
 
   internal class PauseState : State
   {
@@ -47,7 +46,7 @@
       window.Draw(instructionText);
     }
 
-    public override bool Update(TimeSpan dt)
+    public override bool Update(Time dt)
     {
       return false;
     }

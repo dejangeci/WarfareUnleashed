@@ -1,7 +1,7 @@
 ﻿namespace Ch06_Menus
 {
+  using SFML.System;
   using SFML.Window;
-  using System;
 
   internal class GameState : State
   {
@@ -20,7 +20,7 @@
       world.Draw();
     }
 
-    public override bool Update(TimeSpan dt)
+    public override bool Update(Time dt)
     {
       world.Update(dt);
 

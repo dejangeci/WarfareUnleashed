@@ -48,7 +48,7 @@
       window.Draw(guiContainer);
     }
 
-    public override bool Update(System.TimeSpan dt)
+    public override bool Update(Time dt)
     {
       return true;
     }

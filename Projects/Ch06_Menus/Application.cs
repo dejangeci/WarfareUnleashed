@@ -3,12 +3,10 @@
   using SFML.Graphics;
   using SFML.System;
   using SFML.Window;
-  using System;
-  using System.Diagnostics;
 
   internal class Application
   {
-    private readonly TimeSpan timePerFrame = TimeSpan.FromSeconds(1 / 60f);
+    private readonly Time timePerFrame = Time.FromSeconds(1 / 60f);
 
     private RenderWindow window;
     private TextureHolder textures;
@@ -19,7 +17,7 @@
     private State.Context stateStackContext;
 
     private Text statisticsText;
-    private TimeSpan statisticsUpdateTime;
+    private Time statisticsUpdateTime;
     private int statisticsNumFrames;
 
     public Application()
@@ -59,13 +57,13 @@
 
     public void Run()
     {
-      var stopwatch = new Stopwatch();
-      var timeSinceLastUpdate = TimeSpan.Zero;
+      var clock = new Clock();
+      var timeSinceLastUpdate = Time.Zero;
 
       while (window.IsOpen)
       {
-        var elapsedTime = stopwatch.Elapsed;
-        stopwatch.Restart();
+        var elapsedTime = clock.ElapsedTime;
+        clock.Restart();
         timeSinceLastUpdate += elapsedTime;
 
         while (timeSinceLastUpdate > timePerFrame)
@@ -97,7 +95,7 @@
       stateStack.HandleKeyboardInput(key, isPressed);
     }
 
-    private void Update(TimeSpan dt)
+    private void Update(Time dt)
     {
       stateStack.Update(dt);
     }
@@ -114,16 +112,16 @@
       window.Display();
     }
 
-    private void UpdateStatistics(TimeSpan dt)
+    private void UpdateStatistics(Time dt)
     {
       statisticsUpdateTime += dt;
       statisticsNumFrames += 1;
 
-      if (statisticsUpdateTime >= TimeSpan.FromSeconds(1))
+      if (statisticsUpdateTime >= Time.FromSeconds(1))
       {
         statisticsText.DisplayedString = string.Format("FPS: {0}", statisticsNumFrames);
 
-        statisticsUpdateTime -= TimeSpan.FromSeconds(1);
+        statisticsUpdateTime -= Time.FromSeconds(1);
         statisticsNumFrames = 0;
       }
     }

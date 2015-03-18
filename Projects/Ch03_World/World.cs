@@ -2,7 +2,6 @@
 {
   using SFML.Graphics;
   using SFML.System;
-  using System;
   using System.Collections.Generic;
 
   internal class World
@@ -46,10 +45,10 @@
       worldView.Center = spawnPosition;
     }
 
-    public void Update(TimeSpan dt)
+    public void Update(Time dt)
     {
       // Scroll the world
-      worldView.Move(new Vector2f(0, scrollSpeed * (dt.Milliseconds / 1000f)));
+      worldView.Move(new Vector2f(0, scrollSpeed * dt.AsSeconds()));
 
       // Move the player sidewards (plane scouts follow the main aircraft)
       var position = playerAircraft.Position;

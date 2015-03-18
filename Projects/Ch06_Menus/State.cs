@@ -1,8 +1,8 @@
 ﻿namespace Ch06_Menus
 {
   using SFML.Graphics;
+  using SFML.System;
   using SFML.Window;
-  using System;
 
   internal abstract class State
   {
@@ -16,7 +16,7 @@
     }
 
     public abstract void Draw();
-    public abstract bool Update(TimeSpan dt);
+    public abstract bool Update(Time dt);
     public abstract bool HandleKeyboardInput(Keyboard.Key key, bool isPressed);
 
     protected void RequestStackPush(States.ID stateId)

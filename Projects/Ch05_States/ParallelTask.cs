@@ -1,19 +1,19 @@
 ﻿namespace Ch05_States
 {
-  using System.Diagnostics;
+  using SFML.System;
   using System.Threading;
 
   internal class ParallelTask
   {
     private Thread thread;
     private bool finished;
-    private Stopwatch elapsedTime;
+    private Clock elapsedTime;
     private object mutex;
 
     public ParallelTask()
     {
       thread = new Thread(this.RunTask);
-      elapsedTime = new Stopwatch();
+      elapsedTime = new Clock();
       mutex = new object();
     }
 
@@ -35,7 +35,7 @@
     public float GetCompletion()
     {
       // 100% at 10 seconds of elapsed time
-      return (elapsedTime.ElapsedMilliseconds / 1000f) / 10f;
+      return elapsedTime.ElapsedTime.AsSeconds() / 10f;
     }
 
     private void RunTask()
@@ -47,7 +47,7 @@
         // Protect the clock
         lock (mutex)
         {
-          if (elapsedTime.Elapsed.Seconds >= 10)
+          if (elapsedTime.ElapsedTime.AsSeconds() >= 10)
           {
             ended = true;
           }

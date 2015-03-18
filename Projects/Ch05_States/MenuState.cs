@@ -3,7 +3,6 @@
   using SFML.Graphics;
   using SFML.System;
   using SFML.Window;
-  using System;
   using System.Collections.Generic;
 
   internal class MenuState : State
@@ -55,7 +54,7 @@
       }
     }
 
-    public override bool Update(TimeSpan dt)
+    public override bool Update(Time dt)
     {
       return true;
     }

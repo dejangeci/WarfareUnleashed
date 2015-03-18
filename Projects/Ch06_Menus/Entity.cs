@@ -1,7 +1,6 @@
 ﻿namespace Ch06_Menus
 {
   using SFML.System;
-  using System;
 
   internal abstract class Entity : SceneNode
   {
@@ -34,9 +33,9 @@
       return velocity;
     }
 
-    protected override void UpdateCurrent(TimeSpan dt)
+    protected override void UpdateCurrent(Time dt)
     {
-      Position += velocity * (dt.Milliseconds / 1000f);
+      Position += velocity * dt.AsSeconds();
     }
   }
 }

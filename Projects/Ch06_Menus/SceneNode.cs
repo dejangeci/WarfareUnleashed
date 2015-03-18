@@ -2,7 +2,6 @@
 {
   using SFML.Graphics;
   using SFML.System;
-  using System;
   using System.Collections.Generic;
 
   internal class SceneNode : Transformable, Drawable
@@ -32,18 +31,18 @@
       return foundChild;
     }
 
-    public void Update(TimeSpan dt)
+    public void Update(Time dt)
     {
       UpdateCurrent(dt);
       UpdateChildren(dt);
     }
 
-    protected virtual void UpdateCurrent(TimeSpan dt)
+    protected virtual void UpdateCurrent(Time dt)
     {
       // Do nothing by default
     }
 
-    private void UpdateChildren(TimeSpan dt)
+    private void UpdateChildren(Time dt)
     {
       foreach (var child in children)
       {
@@ -91,7 +90,7 @@
       return transform;
     }
 
-    public void OnCommand(Command command, TimeSpan dt)
+    public void OnCommand(Command command, Time dt)
     {
       // Command current node, if category matches
       var category = this.GetCategory();

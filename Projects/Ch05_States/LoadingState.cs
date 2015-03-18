@@ -53,7 +53,7 @@
       window.Draw(progressBar);
     }
 
-    public override bool Update(System.TimeSpan dt)
+    public override bool Update(Time dt)
     {
       // Update the progress bar from the remote task or finish it
       if (loadingTask.IsFinished())

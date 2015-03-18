@@ -4,7 +4,6 @@
   using SFML.Graphics;
   using SFML.System;
   using SFML.Window;
-  using System;
 
   internal class MenuState : State
   {
@@ -60,7 +59,7 @@
       window.Draw(guiContainer);
     }
 
-    public override bool Update(TimeSpan dt)
+    public override bool Update(Time dt)
     {
       return true;
     }

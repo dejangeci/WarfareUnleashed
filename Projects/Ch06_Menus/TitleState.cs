@@ -3,7 +3,6 @@
   using SFML.Graphics;
   using SFML.System;
   using SFML.Window;
-  using System;
 
   internal class TitleState : State
   {
@@ -11,7 +10,7 @@
     private Text text;
 
     private bool showText;
-    private TimeSpan textEffectTime;
+    private Time textEffectTime;
 
     public TitleState(StateStack stack, Context context)
       : base(stack, context)
@@ -19,7 +18,7 @@
       backgroundSprite = new Sprite();
       text = new Text();
       showText = true;
-      textEffectTime = TimeSpan.Zero;
+      textEffectTime = Time.Zero;
 
       backgroundSprite.Texture = context.Textures.Get(Textures.ID.TitleScreen);
 
@@ -37,14 +36,14 @@
       if (showText) window.Draw(text);
     }
 
-    public override bool Update(TimeSpan dt)
+    public override bool Update(Time dt)
     {
       textEffectTime += dt;
 
-      if (textEffectTime >= TimeSpan.FromSeconds(.5))
+      if (textEffectTime >= Time.FromSeconds(.5f))
       {
         showText = !showText;
-        textEffectTime = TimeSpan.Zero;
+        textEffectTime = Time.Zero;
       }
 
       return true;

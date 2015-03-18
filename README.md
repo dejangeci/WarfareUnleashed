@@ -2,11 +2,8 @@ This is a C# port of the first 6 chapters from the book "SFML Game Development".
 
 For the most part, it follows the original source code. These are the differences:
 
-### Features missing in C#:
+### Differences in C#:
 
-* sf::Clock -> System.Diagnostics.Stopwatch
-* sf::Time -> System.TimeSpan
-* sf::Time.asSeconds() -> TimeSpan.Milliseconds / 1000f
 * sf::Thread -> System.Threading.Thread
 * sf::Mutex -> lock(object)
 * std::size_t -> int

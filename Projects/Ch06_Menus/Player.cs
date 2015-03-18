@@ -2,7 +2,6 @@
 {
   using SFML.System;
   using SFML.Window;
-  using System;
   using System.Collections.Generic;
   using System.Linq;
 
@@ -15,7 +14,7 @@
       velocity = new Vector2f(x, y);
     }
 
-    public override void Execute(SceneNode subject, TimeSpan dt)
+    public override void Execute(SceneNode subject, Time dt)
     {
       ((Aircraft)subject).Accelerate(velocity);
     }

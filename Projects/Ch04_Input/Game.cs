@@ -3,12 +3,10 @@
   using SFML.Graphics;
   using SFML.System;
   using SFML.Window;
-  using System;
-  using System.Diagnostics;
 
   internal class Game
   {
-    private readonly TimeSpan timePerFrame = TimeSpan.FromSeconds(1 / 60f);
+    private readonly Time timePerFrame = Time.FromSeconds(1 / 60f);
 
     private RenderWindow window;
     private World world;
@@ -16,7 +14,7 @@
 
     private Font font;
     private Text statisticsText;
-    private TimeSpan statisticsUpdateTime;
+    private Time statisticsUpdateTime;
     private int statisticsNumFrames;
 
     public Game()
@@ -41,12 +39,12 @@
 
     public void Run()
     {
-      var stopwatch = new Stopwatch();
-      var timeSinceLastUpdate = TimeSpan.Zero;
+      var clock = new Clock();
+      var timeSinceLastUpdate = Time.Zero;
       while (window.IsOpen)
       {
-        var elapsedTime = stopwatch.Elapsed;
-        stopwatch.Restart();
+        var elapsedTime = clock.ElapsedTime;
+        clock.Restart();
         timeSinceLastUpdate += elapsedTime;
 
         while (timeSinceLastUpdate > timePerFrame)
@@ -69,7 +67,7 @@
       player.HandleRealtimeInput(world.GetCommandQueue());
     }
 
-    private void Update(TimeSpan elapsedTime)
+    private void Update(Time elapsedTime)
     {
       world.Update(elapsedTime);
     }
@@ -84,16 +82,16 @@
       window.Display();
     }
 
-    private void UpdateStatistics(TimeSpan elapsedTime)
+    private void UpdateStatistics(Time elapsedTime)
     {
       statisticsUpdateTime += elapsedTime;
       statisticsNumFrames += 1;
 
-      if (statisticsUpdateTime >= TimeSpan.FromSeconds(1))
+      if (statisticsUpdateTime >= Time.FromSeconds(1))
       {
-        statisticsText.DisplayedString = string.Format("Frames / Second = {0}\nTime / Update = {1} ticks\nUse arrow keys to move.", statisticsNumFrames, statisticsUpdateTime.Ticks / statisticsNumFrames);
+        statisticsText.DisplayedString = string.Format("Frames / Second = {0}\nMicroseconds / Frame = {1}\nUse arrow keys to move.", statisticsNumFrames, statisticsUpdateTime.AsMicroseconds() / statisticsNumFrames);
 
-        statisticsUpdateTime -= TimeSpan.FromSeconds(1);
+        statisticsUpdateTime -= Time.FromSeconds(1);
         statisticsNumFrames = 0;
       }
     }

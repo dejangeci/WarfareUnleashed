@@ -40,10 +40,10 @@
       worldView.Center = spawnPosition;
     }
 
-    public void Update(TimeSpan dt)
+    public void Update(Time dt)
     {
       // Scroll the world, reset player velocity
-      worldView.Move(new Vector2f(0, scrollSpeed * (dt.Milliseconds / 1000f)));
+      worldView.Move(new Vector2f(0, scrollSpeed * dt.AsSeconds()));
       playerAircraft.SetVelocity(0, 0);
 
       // Forward commands to scene graph, adapt velocity (scrolling, diagonal correction)
